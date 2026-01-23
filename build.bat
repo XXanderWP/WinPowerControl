@@ -1,0 +1,1 @@
+pyinstaller --onefile --windowed --name="BatteryShutdown" --icon=icon.ico battery_shutdown.py

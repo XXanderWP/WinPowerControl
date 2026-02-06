@@ -14,6 +14,9 @@ if exist "venv\Scripts\activate.bat" (
     exit /b 1
 )
 
+echo Generating version file...
+python .\utils\version_gen.py
+
 for /f "delims=" %%n in ('python utils/get_project_name.py') do set EXE_NAME=%%n
 
 REM Check if icon file exists (optional)
@@ -41,6 +44,7 @@ pyinstaller --onefile ^
     --name=%EXE_NAME% ^
     %ICON_PARAM% ^
     --add-data "src;src" ^
+    --version-file version.txt ^
     main.py
 
 if errorlevel 1 (
@@ -48,6 +52,8 @@ if errorlevel 1 (
     echo ERROR: Build failed
     exit /b 1
 )
+
+if exist "version.txt" del /q version.txt
 
 echo.
 echo ========================================

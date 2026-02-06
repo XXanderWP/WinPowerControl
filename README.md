@@ -117,7 +117,7 @@ The executable will be created in the `dist` folder.
 
 ### Configuration File
 
-Settings are stored in: `%USERPROFILE%\.battery_shutdown\config.json`
+Settings are stored in: `%USERPROFILE%\.win_power_control\config.json`
 
 Example configuration:
 ```json

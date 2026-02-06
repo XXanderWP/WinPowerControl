@@ -1,7 +1,7 @@
 [project]
 name = "WinPowerControl"
 version = "1.0.3"
-description = "WinPowerControl - automated build"
+description = "Battery Auto-Shutdown utility"
 authors = [ { name = "XanderWP" } ]
 readme = "README.md"
 requires-python = ">=3.8"

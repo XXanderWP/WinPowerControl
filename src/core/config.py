@@ -25,7 +25,7 @@ class ConfigManager:
     
     def _get_config_path(self):
         """Get path to configuration file in user's home directory"""
-        app_data_dir = Path.home() / '.battery_shutdown'
+        app_data_dir = Path.home() / '.win_power_control'
         app_data_dir.mkdir(exist_ok=True)
         return str(app_data_dir / 'config.json')
     

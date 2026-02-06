@@ -1,8 +1,13 @@
 # Battery Auto-Shutdown
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+<center>
+
+[![Dynamic TOML Badge](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2FXXanderWP%2FWinPowerControl%2Frefs%2Fheads%2Fmain%2Fpyproject.toml&query=%24.project.version&logo=gitforwindows&label=App%20version)](https://github.com/XXanderWP/WinPowerControl/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
+![Python Version from PEP 621 TOML](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2FXXanderWP%2FWinPowerControl%2Frefs%2Fheads%2Fmain%2Fpyproject.toml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+</center>
 
 A lightweight desktop application that automatically shuts down your computer when running on battery power. Perfect for preventing accidental battery drain if your charger gets disconnected.
 
@@ -37,7 +42,7 @@ If your system language isn't supported, the app defaults to English.
 
 ### Option 1: Using Pre-built Executable (Recommended)
 
-1. Download the latest `BatteryShutdown.exe` from [Releases](../../releases)
+1. Download the latest EXE file from [Releases](../../releases)
 2. Run the executable
 3. Configure your settings
 4. Enable auto-shutdown

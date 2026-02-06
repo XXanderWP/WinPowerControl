@@ -1,6 +1,10 @@
 # Battery Auto-Shutdown
 
 <center>
+<a href="https://github.com/XXanderWP/WinPowerControl"><img src="./icon.ico"/></a>
+</center>
+
+<center>
 
 [![Dynamic TOML Badge](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2FXXanderWP%2FWinPowerControl%2Frefs%2Fheads%2Fmain%2Fpyproject.toml&query=%24.project.version&logo=gitforwindows&label=App%20version)](https://github.com/XXanderWP/WinPowerControl/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)

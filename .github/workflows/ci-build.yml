@@ -85,24 +85,30 @@ jobs:
             return releases.data[0].tag_name;
 
 
-      - name: Get commits affecting src folder since last release
+      - name: Get commits affecting project files since last release
         id: commits
         if: steps.check_release.outputs.result != 'true'
         shell: pwsh
         run: |
           $lastTag = '${{ steps.last_release.outputs.result }}'
+          $paths = @("src/", "build.bat", "requirements.txt", "pyproject.toml", "icon.ico", "main.py")
+          
           if ($lastTag -eq "") {
-              $commits = git log --pretty=format:"- %s (%h)" -- src/
+              $commits = git log --pretty=format:"- %s (%h)" -- $paths
           } else {
-              $commits = git log $lastTag..HEAD --pretty=format:"- %s (%h)" -- src/
+              $commits = git log $lastTag..HEAD --pretty=format:"- %s (%h)" -- $paths
           }
+
           if (-not $commits) {
-              $commits = "No changes in src/"
+              $commits = "No changes in src/, build.bat, or requirements.txt"
           }
+
+          # Сохраняем в файл
           $commits | Out-File -Encoding UTF8 commits.txt
+
+          # Объединяем в одну строку для GitHub Actions environment
           $commitsString = $commits -join "`n"
           Add-Content -Path $env:GITHUB_ENV -Value "CHANGELOG=$commitsString"
-
 
 
       - name: Create GitHub Release

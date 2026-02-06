@@ -76,7 +76,6 @@ To create a standalone executable:
 1. **Activate virtual environment** (if not already activated)
    ```bash
    venv\Scripts\activate  # Windows
-   source venv/bin/activate  # Linux/macOS
    ```
 
 2. **Run build script:**

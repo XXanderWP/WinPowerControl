@@ -70,7 +70,7 @@ class SettingsDialog(QDialog):
         extra_layout.addWidget(self.sound_checkbox)
         
         # Autostart
-        self.autostart_checkbox = QCheckBox(translator.get('autostart_windows'))
+        self.autostart_checkbox = QCheckBox(translator.get('autostart_system'))
         self.autostart_checkbox.setChecked(is_autostart_enabled())
         self.autostart_checkbox.stateChanged.connect(self.on_autostart_changed)
         extra_layout.addWidget(self.autostart_checkbox)

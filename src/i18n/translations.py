@@ -40,7 +40,7 @@ TRANSLATIONS = {
         'min_battery_percent': 'Minimum battery charge:',
         'additional_settings': 'Additional Settings',
         'sound_notifications': 'Sound notifications',
-        'autostart_windows': 'Run at Windows startup',
+        'autostart_system': 'Run at system startup',
         'save_button': 'Save',
         'cancel_button': 'Cancel',
         
@@ -99,7 +99,7 @@ TRANSLATIONS = {
         'min_battery_percent': 'Минимальный заряд батареи:',
         'additional_settings': 'Дополнительные настройки',
         'sound_notifications': 'Звуковые оповещения',
-        'autostart_windows': 'Автозапуск при старте Windows',
+        'autostart_system': 'Автозапуск при старте системы',
         'save_button': 'Сохранить',
         'cancel_button': 'Отмена',
         
@@ -158,7 +158,7 @@ TRANSLATIONS = {
         'min_battery_percent': 'Мінімальний заряд батареї:',
         'additional_settings': 'Додаткові налаштування',
         'sound_notifications': 'Звукові сповіщення',
-        'autostart_windows': 'Автозапуск при старті Windows',
+        'autostart_system': 'Автозапуск при старті системи',
         'save_button': 'Зберегти',
         'cancel_button': 'Скасувати',
         

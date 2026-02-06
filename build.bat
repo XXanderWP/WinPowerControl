@@ -14,6 +14,8 @@ if exist "venv\Scripts\activate.bat" (
     exit /b 1
 )
 
+for /f "delims=" %%n in ('python utils/get_project_name.py') do set EXE_NAME=%%n
+
 REM Check if icon file exists (optional)
 set ICON_PARAM=
 if exist "icon.ico" (
@@ -27,7 +29,7 @@ echo.
 echo Cleaning previous build...
 if exist "build" rmdir /s /q build
 if exist "dist" rmdir /s /q dist
-if exist "BatteryShutdown.spec" del /q BatteryShutdown.spec
+if exist "%EXE_NAME%.spec" del /q %EXE_NAME%.spec
 
 echo.
 echo Building executable with PyInstaller...
@@ -36,7 +38,7 @@ echo.
 
 pyinstaller --onefile ^
     --windowed ^
-    --name=BatteryShutdown ^
+    --name=%EXE_NAME% ^
     %ICON_PARAM% ^
     --add-data "src;src" ^
     main.py

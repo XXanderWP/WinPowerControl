@@ -1,6 +1,6 @@
 [project]
-name = "winpowercontrol"
-version = "1.0.0"
+name = "WinPowerControl"
+version = "1.0.1"
 description = "WinPowerControl - automated build"
 authors = [ { name = "XanderWP" } ]
 readme = "README.md"

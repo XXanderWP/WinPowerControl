@@ -72,6 +72,7 @@ jobs:
 
       - name: Get latest release tag
         id: last_release
+        if: steps.check_release.outputs.result != 'true'
         uses: actions/github-script@v6
         with:
           script: |
@@ -86,6 +87,7 @@ jobs:
 
       - name: Get commits affecting src folder since last release
         id: commits
+        if: steps.check_release.outputs.result != 'true'
         shell: pwsh
         run: |
           $lastTag = '${{ steps.last_release.outputs.result }}'

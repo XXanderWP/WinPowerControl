@@ -5,6 +5,7 @@ Provides user interface for battery monitoring and shutdown control
 
 import time
 import psutil
+import sys
 from PyQt5.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                              QLabel, QCheckBox, QPushButton, QGroupBox,
                              QSystemTrayIcon, QMenu, QDialog, QScrollArea)
@@ -15,10 +16,13 @@ from src.core.config import ConfigManager
 from src.core.monitor import BatteryMonitor
 from src.gui.settings_dialog import SettingsDialog
 from src.gui.help_dialog import HelpDialog
+from src.gui.error_dialog import show_error
 from src.gui.shutdown_dialog import ShutdownDialog
 from src.i18n.translations import translator
 from src.utils.system import execute_shutdown
 
+
+debug_mode = '--debug' in sys.argv
 
 class WorkerSignals(QObject):
     """Signals for communication between threads"""
@@ -37,6 +41,13 @@ class MainWindow(QMainWindow):
         # Apply language setting if specified
         if self.config_manager.get('language'):
             translator.set_language(self.config_manager.get('language'))
+            
+        battery = psutil.sensors_battery()
+        if not battery:
+            show_error(translator.get('battery_not_detected_dialog') if not debug_mode else [translator.get('battery_not_detected_dialog'), "!!! Ignored in debug mode"], parent=self)
+            if not debug_mode:
+                exit(0)
+            
         
         # Setup signals
         self.signals = WorkerSignals()

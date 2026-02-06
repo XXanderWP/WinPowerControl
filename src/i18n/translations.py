@@ -33,6 +33,7 @@ TRANSLATIONS = {
         'minutes_short': 'min',
         'seconds_short': 'sec',
         'battery_not_detected': '⚠️ Battery not detected',
+        'battery_not_detected_dialog': '⚠️ Battery not detected. Without this system cannot function. The application will be closed.',
         
         # Settings dialog
         'main_settings': 'Main Settings',
@@ -65,6 +66,10 @@ TRANSLATIONS = {
         'help_tray_title': 'System Tray Operation',
         'help_current_status_title': 'Current Status',
         'help_full_exit_title': 'Complete Program Shutdown',
+        
+        'error_dialog_title': 'Error',
+        'close_button': 'Close',
+        'unknown_error_occurred': 'An unknown error occurred',
     },
     'ru': {
         # Заголовки окон
@@ -92,6 +97,7 @@ TRANSLATIONS = {
         'minutes_short': 'мин',
         'seconds_short': 'сек',
         'battery_not_detected': '⚠️ Батарея не обнаружена',
+        'battery_not_detected_dialog': '⚠️ Батарея не обнаружена. Без этого система не может работать. Приложение будет закрыто.',
         
         # Диалог настроек
         'main_settings': 'Основные настройки',
@@ -124,6 +130,10 @@ TRANSLATIONS = {
         'help_tray_title': 'Работа в системном трее',
         'help_current_status_title': 'Текущий статус',
         'help_full_exit_title': 'Полное закрытие программы',
+        
+        'error_dialog_title': 'Ошибка',
+        'close_button': 'Закрыть',
+        'unknown_error_occurred': 'Произошла неизвестная ошибка',
     },
     'uk': {
         # Заголовки вікон
@@ -151,6 +161,7 @@ TRANSLATIONS = {
         'minutes_short': 'хв',
         'seconds_short': 'сек',
         'battery_not_detected': '⚠️ Батарею не виявлено',
+        'battery_not_detected_dialog': '⚠️ Батарею не виявлено. Без неї система не може працювати. Додаток буде закрито.',
         
         # Діалог налаштувань
         'main_settings': 'Основні налаштування',
@@ -183,6 +194,10 @@ TRANSLATIONS = {
         'help_tray_title': 'Робота в системному треї',
         'help_current_status_title': 'Поточний статус',
         'help_full_exit_title': 'Повне закриття програми',
+        
+        'error_dialog_title': 'Помилка',
+        'close_button': 'Закрити',
+        'unknown_error_occurred': 'Сталася невідома помилка',
     }
 }
 

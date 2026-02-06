@@ -70,8 +70,14 @@ If your system language isn't supported, the app defaults to English.
 
 3. **Run the application:**
    ```bash
+   # Default run
    python main.py
+   
+   # Debug mode (disables battery check at startup)
+   python main.py --debug
    ```
+   
+
 
 ## 🛠️ Building from Source
 

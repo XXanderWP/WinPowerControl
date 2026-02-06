@@ -51,7 +51,7 @@ If your system language isn't supported, the app defaults to English.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/battery-shutdown.git
+   git clone https://github.com/XXanderWP/WinPowerControl.git
    cd battery-shutdown
    ```
 

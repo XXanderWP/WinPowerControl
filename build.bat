@@ -4,11 +4,13 @@ echo Battery Shutdown - Build Script
 echo ========================================
 echo.
 
-REM Check if virtual environment is activated
-if not defined VIRTUAL_ENV (
-    echo ERROR: Virtual environment is not activated
-    echo Please run: venv\Scripts\activate.bat
-    pause
+REM Activate virtual environment
+if exist "venv\Scripts\activate.bat" (
+    echo Activating virtual environment...
+    call venv\Scripts\activate.bat
+) else (
+    echo ERROR: Virtual environment not found
+    echo Please run setup script first: setup_venv.bat
     exit /b 1
 )
 
@@ -42,7 +44,6 @@ pyinstaller --onefile ^
 if errorlevel 1 (
     echo.
     echo ERROR: Build failed
-    pause
     exit /b 1
 )
 
@@ -55,4 +56,3 @@ echo Executable location: dist\BatteryShutdown.exe
 echo.
 echo You can now distribute the executable file.
 echo.
-pause

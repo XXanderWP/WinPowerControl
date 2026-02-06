@@ -1,0 +1,98 @@
+name: CI Build and Release
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Read version from pyproject.toml
+        id: read_version
+        shell: pwsh
+        run: |
+          $content = Get-Content -Raw -Path pyproject.toml
+          $m = [regex]::Match($content,'version\s*=\s*"(.*?)"')
+          if (-not $m.Success) { Write-Error "Version not found in pyproject.toml"; exit 1 }
+          Add-Content -Path $env:GITHUB_ENV -Value "RELEASE_VERSION=$($m.Groups[1].Value)"
+          Write-Host "Found version $($m.Groups[1].Value)"
+
+      - name: Check if release exists
+        id: check_release
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const version = process.env.RELEASE_VERSION;
+            const tag = `v${version}`;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const response = await github.rest.repos.listReleases({ owner, repo });
+            const exists = response.data.some(r => r.tag_name === tag);
+            return exists;
+
+      - name: Release exists - skip
+        if: steps.check_release.outputs.result == 'true'
+        run: Write-Host "Release v${{ env.RELEASE_VERSION }} already exists. Skipping build and release."
+
+      - name: Install dependencies
+        if: steps.check_release.outputs.result != 'true'
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          ./setup_venv.bat
+
+      - name: Run build script
+        if: steps.check_release.outputs.result != 'true'
+        shell: pwsh
+        run: |
+          Write-Host "Running build.bat"
+          & .\build.bat
+
+      - name: Package exe
+        if: steps.check_release.outputs.result != 'true'
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem -Path .\dist -Filter *.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $exe) { Write-Error "No exe found in dist folder"; exit 1 }
+          $zip = "release-$env:RELEASE_VERSION.zip"
+          Compress-Archive -Path $exe.FullName -DestinationPath $zip -Force
+          Add-Content -Path $env:GITHUB_ENV -Value "ASSET_PATH=$zip"
+          Write-Host "Packaged $($exe.FullName) -> $zip"
+
+      - name: Create GitHub Release
+        if: steps.check_release.outputs.result != 'true'
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.RELEASE_VERSION }}
+          release_name: v${{ env.RELEASE_VERSION }}
+          body: Automated release by GitHub Actions
+          draft: false
+          prerelease: false
+
+      - name: Upload release asset
+        if: steps.check_release.outputs.result != 'true'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ env.ASSET_PATH }}
+          asset_name: WinPowerControl-${{ env.RELEASE_VERSION }}.zip
+          asset_content_type: application/zip
+

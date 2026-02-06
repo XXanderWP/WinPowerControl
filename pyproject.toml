@@ -1,0 +1,8 @@
+[project]
+name = "winpowercontrol"
+version = "1.0.0"
+description = "WinPowerControl - automated build"
+authors = [ { name = "XanderWP" } ]
+readme = "README.md"
+requires-python = ">=3.8"
+

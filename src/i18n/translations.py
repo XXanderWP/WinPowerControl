@@ -32,7 +32,7 @@ TRANSLATIONS = {
         'time_until_shutdown': '⏱ Time until shutdown',
         'minutes_short': 'min',
         'seconds_short': 'sec',
-        'battery_not_detected': 'Battery not detected',
+        'battery_not_detected': '⚠️ Battery not detected',
         
         # Settings dialog
         'main_settings': 'Main Settings',
@@ -91,7 +91,7 @@ TRANSLATIONS = {
         'time_until_shutdown': '⏱ До выключения',
         'minutes_short': 'мин',
         'seconds_short': 'сек',
-        'battery_not_detected': 'Батарея не обнаружена',
+        'battery_not_detected': '⚠️ Батарея не обнаружена',
         
         # Диалог настроек
         'main_settings': 'Основные настройки',
@@ -150,7 +150,7 @@ TRANSLATIONS = {
         'time_until_shutdown': '⏱ До вимикання',
         'minutes_short': 'хв',
         'seconds_short': 'сек',
-        'battery_not_detected': 'Батарею не виявлено',
+        'battery_not_detected': '⚠️ Батарею не виявлено',
         
         # Діалог налаштувань
         'main_settings': 'Основні налаштування',

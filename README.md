@@ -57,13 +57,7 @@ If your system language isn't supported, the app defaults to English.
    setup_venv.bat
    venv\Scripts\activate
    ```
-   
-   Linux/macOS:
-   ```bash
-   chmod +x setup_venv.sh
-   ./setup_venv.sh
-   source venv/bin/activate
-   ```
+
 
 3. **Run the application:**
    ```bash
@@ -87,11 +81,6 @@ To create a standalone executable:
    build.bat
    ```
    
-   Linux/macOS:
-   ```bash
-   chmod +x build.sh
-   ./build.sh
-   ```
 
 The executable will be created in the `dist` folder.
 
@@ -176,9 +165,7 @@ battery-shutdown/
 │       └── system.py      # System utilities (shutdown, autostart)
 ├── requirements.txt       # Python dependencies
 ├── setup_venv.bat        # Virtual environment setup (Windows)
-├── setup_venv.sh         # Virtual environment setup (Linux/macOS)
 ├── build.bat             # Build script (Windows)
-├── build.sh              # Build script (Linux/macOS)
 └── README.md             # This file
 ```
 
@@ -255,16 +242,3 @@ Created with ❤️ for better battery management
 - [ ] Sleep mode trigger
 - [ ] Battery statistics
 - [ ] Custom shutdown scripts
-- [ ] Web interface for remote management
-- [ ] Mobile app companion
-
-## 📊 Changelog
-
-### Version 1.0.0 (2024-02-06)
-- Initial release
-- Multi-language support (EN, RU, UK)
-- Configurable shutdown delay
-- Battery threshold setting
-- System tray integration
-- Auto-start option
-- Sound notifications
